@@ -1,0 +1,33 @@
+<h1>Contacts</h1>
+
+<%= link_to "New Contact", new_contact_path if authenticated? %>
+
+<p>
+
+  <table>
+    <tr>
+      <th> Name </th>
+      <th> Phone </th>
+      <th> Email </th>
+      <% if authenticated? %>
+        <th> Edit </th>
+        <th> Delete </th>
+      <% end %>
+    </tr>
+
+    <% @contacts.each do |contact| %>
+      <tr>
+        <td> <%= contact.name %> </td> 
+        <td> <%= contact.phone %> </td>
+        <td> <%= contact.email %> </td>
+        <% if authenticated? %>
+          <td> <%= link_to "Edit", edit_contact_path(contact.id) %> </td>
+          <td> <%= button_to "Delete", contact, method: :delete, data: { turbo_confirm: "Are you sure?" } %> </td> 
+      </tr>
+    <% end %>
+
+  </table>
+
+    <br>
+  <% end %>
+</p>
