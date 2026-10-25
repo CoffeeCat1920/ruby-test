@@ -1,5 +1,4 @@
 class ContactsController < ApplicationController
-  
   before_action :set_contact, only: %i[ show edit update destroy ] 
   allow_unauthenticated_access only: %i[ index show ]
 
