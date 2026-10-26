@@ -1,9 +1,9 @@
 class ContactsController < ApplicationController
-  before_action :set_contact, only: %i[ show edit update destroy ] 
+  before_action :set_contact, only: %i[ show edit update destroy ]
   allow_unauthenticated_access only: %i[ index show ]
 
   def index
-    @contacts = Contact.all 
+    @contacts = Contact.all
   end
 
   def show
@@ -23,12 +23,12 @@ class ContactsController < ApplicationController
   end
 
   def edit
-  end 
+  end
 
   def update
     if @contact.update(contact_params)
       redirect_to @contact
-    else  
+    else
       render :edit, status: :unprocessable_entity
     end
   end
@@ -40,7 +40,7 @@ class ContactsController < ApplicationController
   end
 
   private
-    def set_contact 
+    def set_contact
       @contact = Contact.find(params[:id])
     end
 
